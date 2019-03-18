@@ -9,6 +9,7 @@
     "express": "^4.16.4",
     "firebase": "^4.12.1",
     "google-map-react": "^0.34.0",
+    "google-maps-react": "^2.0.2",
     "history": "^4.7.2",
     "moment": "^2.22.0",
     "mysql": "^2.16.0",

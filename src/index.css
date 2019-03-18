@@ -150,3 +150,23 @@ body {
   justify-content: space-around;
   flex-direction: column;
 }
+
+
+.mapContainer {
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.injuredMap {
+  height: 80vh;
+  width: 50%;
+}
+
+.injuredForm {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

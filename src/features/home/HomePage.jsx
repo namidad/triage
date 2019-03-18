@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import { Form, Grid, Button, Header, Segment, Message } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { loginUser } from '../../app/reducers/userActions'
 
 class HomePage extends Component {
 
@@ -185,7 +184,6 @@ class HomePage extends Component {
   }
 
   render(){
-    const {user}=this.state;
     if(!this.props.isLogged && !this.state.new){
       return (
         <div>

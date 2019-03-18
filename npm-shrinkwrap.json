@@ -1,5 +1,5 @@
 {
-  "name": "revents",
+  "name": "triage",
   "version": "0.1.0",
   "lockfileVersion": 1,
   "requires": true,
@@ -4826,6 +4826,11 @@
         "fbjs": "^0.8.3",
         "scriptjs": "^2.5.7"
       }
+    },
+    "google-maps-react": {
+      "version": "2.0.2",
+      "resolved": "https://registry.npmjs.org/google-maps-react/-/google-maps-react-2.0.2.tgz",
+      "integrity": "sha512-6cYauGwt22haDUrWxKQ6yoNOqjiuxHo8YYcmb+aBvNICokdXmZOUB6Ah4vD5VexMVlrwP2PFqA/D8sHpEB52KA=="
     },
     "got": {
       "version": "6.7.1",
