@@ -13,15 +13,15 @@ class App extends Component {
           <Route exact path='/' component={HomePage}/>
         </Switch>
 
-        <Route 
-        path="/(.+)" 
+        <Route
+        path="/(.+)"
         render={() => (
           <div>
           <NavBar />
           <Container className="main">
             <Switch>
-              <Route path='/triage' component={TriageDetailedPage}/>              
-            </Switch> 
+              <Route path='/triage' component={TriageDetailedPage}/>
+            </Switch>
           </Container>
           </div>
         )} />
