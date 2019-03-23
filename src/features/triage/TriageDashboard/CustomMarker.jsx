@@ -5,11 +5,13 @@ const CustomMarker = (props) => {
     const {id} = props;
     let image;
     if(props.color === 'red'){
-      image = 'http://maps.google.com/mapfiles/ms/icons/red.png';
+      image = 'http://labs.google.com/ridefinder/images/mm_20_red.png';
     } else if(props.color==='yellow'){
-      image = 'http://maps.google.com/mapfiles/ms/icons/yellow.png';
+      image = 'http://labs.google.com/ridefinder/images/mm_20_yellow.png';
     } else if(props.color==='green'){
-      image = 'http://maps.google.com/mapfiles/ms/icons/green.png';
+      image = 'http://labs.google.com/ridefinder/images/mm_20_green.png';
+    } else if(props.color==='black'){
+      image = 'http://labs.google.com/ridefinder/images/mm_20_black.png';
     }
     return (
         <Marker

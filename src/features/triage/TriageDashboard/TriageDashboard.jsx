@@ -13,7 +13,7 @@ export class TriageDashboard extends Component {
     injury: "",
     victims: [{
       id: 0,
-      color: "green",
+      color: "black",
       lat: 51.1089776,
       lng: 17.0326689,
       injury: "head",
@@ -40,6 +40,16 @@ export class TriageDashboard extends Component {
     }]
   }
 
+  componentWillMount(){
+    this.setState({
+      id: this.state.victims[0].id,
+      color: this.state.victims[0].color,
+      lat: this.state.victims[0].lat,
+      lng: this.state.victims[0].lng,
+      injury: this.state.victims[0].injury,
+    })
+  }
+
   handleChangeId=(e)=>{
         this.setState({
           id: e.id,
@@ -62,14 +72,15 @@ const defaultMapOptions = {
   styles: mapStyles
 };
 
-
+  console.log(defaultMapOptions)
     return (
       <div className="mapContainer">
         <div className="injuredMap">
           <Map
               google={this.props.google}
               style={{width: '40%', height: '80%'}}
-              defaultOptions={defaultMapOptions}
+              styles={defaultMapOptions.styles}
+
               initialCenter={{
                 lat: 51.108197,
                 lng: 17.0326689
@@ -78,8 +89,6 @@ const defaultMapOptions = {
             >
 
               {markers}
-
-
 
           </Map>
         </div>
