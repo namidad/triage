@@ -116,7 +116,11 @@ body {
 }
 .injuredMap {
   width: 40%;
+}
 
+.injuredMap .checkbox {
+  padding-right: 20px;
+  padding-bottom: 10px;
 }
 
 .injuredForm {

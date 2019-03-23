@@ -2,7 +2,6 @@ import React from 'react';
 import {Marker} from 'google-maps-react';
 
 const CustomMarker = (props) => {
-    const {id} = props;
     let image;
     if(props.color === 'red'){
       image = 'http://labs.google.com/ridefinder/images/mm_20_red.png';
