@@ -3,6 +3,8 @@ import {Map, GoogleApiWrapper} from 'google-maps-react';
 import CustomMarker from './CustomMarker'
 import { Checkbox } from 'semantic-ui-react'
 import mapStyles from './mapStyles';
+import { connect } from 'react-redux'
+
 
 export class TriageDashboard extends Component {
 
@@ -16,33 +18,7 @@ export class TriageDashboard extends Component {
     yellow: true,
     red: true,
     black: true,
-    victims: [{
-      id: 0,
-      color: "black",
-      lat: 51.1089776,
-      lng: 17.0326689,
-      injury: "head",
-    },{
-      id: 1,
-      color: "green",
-      lat: 51.108197,
-      lng: 17.032295,
-      injury: "hand",
-
-    },{
-      id: 2,
-      color: "red",
-      lat: 51.109147,
-      lng: 17.031609,
-      injury: "leg",
-
-    },{
-      id: 3,
-      color: "yellow",
-      lat: 51.108877,
-      lng: 17.033186,
-      injury: "eye",
-    }]
+    victims: this.props.victims,
   }
 
   componentWillMount(){
@@ -106,45 +82,53 @@ export class TriageDashboard extends Component {
       return null;
     })
 
-    return (
+    if(this.props.logged){
+      return (
+        <div className="mapContainer">
+          <div className="injuredMap">
+          <Checkbox onChange={ e => this.handleChecked("green") }  label='Show green band' defaultChecked/>
+          <Checkbox onChange={ e => this.handleChecked("yellow") } value="yellow" label='Show yellow band' defaultChecked/>
+          <Checkbox onChange={ e => this.handleChecked("red") } value="red" label='Show red band' defaultChecked/>
+          <Checkbox onChange={ e => this.handleChecked("black") } value="black" label='Show black band' defaultChecked/>
+            <Map
+                google={this.props.google}
+                style={{width: '40%', height: '80%'}}
+                styles={mapStyles}
 
-      <div className="mapContainer">
-        <div className="injuredMap">
-        <Checkbox onChange={ e => this.handleChecked("green") }  label='Show green band' defaultChecked/>
-        <Checkbox onChange={ e => this.handleChecked("yellow") } value="yellow" label='Show yellow band' defaultChecked/>
-        <Checkbox onChange={ e => this.handleChecked("red") } value="red" label='Show red band' defaultChecked/>
-        <Checkbox onChange={ e => this.handleChecked("black") } value="black" label='Show black band' defaultChecked/>
-          <Map
-              google={this.props.google}
-              style={{width: '40%', height: '80%'}}
-              styles={mapStyles}
+                initialCenter={{
+                  lat: 51.108197,
+                  lng: 17.0326689
+                }}
+                zoom={18}
+              >
+                {markers}
+            </Map>
+          </div>
 
-              initialCenter={{
-                lat: 51.108197,
-                lng: 17.0326689
-              }}
-              zoom={18}
-            >
+          <div className="injuredForm">
 
-              {markers}
-
-          </Map>
+            <h2>Poszkodowany nr: {this.state.id}</h2>
+            <h3>Kolor opaski: {this.state.color}</h3>
+            <h3>Lat: {this.state.lat}</h3>
+            <h3>Lng: {this.state.lng}</h3>
+            <h3>Obrazenia: {this.state.injury}</h3>
+           </div>
         </div>
 
-        <div className="injuredForm">
+      )
+    }
 
-          <h2>Poszkodowany nr: {this.state.id}</h2>
-          <h3>Kolor opaski: {this.state.color}</h3>
-          <h3>Lat: {this.state.lat}</h3>
-          <h3>Lng: {this.state.lng}</h3>
-          <h3>Obrazenia: {this.state.injury}</h3>
-         </div>
-      </div>
-
-    )
   }
 }
 
-export default GoogleApiWrapper({
+const mapStateToProps = (state) => {
+  return {
+    logged: state.user.isLogged,
+    victims: state.victims.victims,
+  }
+}
+
+
+export default connect(mapStateToProps)(GoogleApiWrapper({
   apiKey: ("AIzaSyCblUbnkuTFlV_z1Uz0L5zowqVds8iIim0")
-})(TriageDashboard)
+})(TriageDashboard))
